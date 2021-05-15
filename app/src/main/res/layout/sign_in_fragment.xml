@@ -46,10 +46,10 @@
             app:layout_constraintTop_toBottomOf="@id/info"
             android:hint="@string/login"
             app:errorEnabled="true"
-            app:endIconTint="@color/color"
             android:layout_marginStart="58dp"
             android:layout_marginEnd="58dp"
             app:endIconDrawable="@drawable/ic_mail"
+            app:endIconMode="custom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -68,6 +68,8 @@
             android:layout_marginStart="58dp"
             android:layout_marginEnd="58dp"
             app:errorEnabled="true"
+            app:endIconDrawable="@drawable/ic_iconspace_private"
+            app:endIconMode="password_toggle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

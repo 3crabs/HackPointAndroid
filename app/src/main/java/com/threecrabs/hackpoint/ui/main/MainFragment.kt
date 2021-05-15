@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.threecrabs.hackpoint.BaseViewModel
+import com.threecrabs.hackpoint.R
 import com.threecrabs.hackpoint.changeAuth
 import com.threecrabs.hackpoint.databinding.MainFragmentBinding
 import com.threecrabs.hackpoint.ui.main.recycler.MainItem
@@ -67,7 +68,7 @@ class MainFragment: Fragment() {
             requireActivity().changeAuth()
         }
         viewModel.sharedPrefs.getToken()?.let {
-            binding.name.text = it.referee.name
+            binding.name.text = getString(R.string.hello, it.referee.name)
         }
     }
 

@@ -17,4 +17,5 @@
     <string name="grade">Оценка</string>
     <string name="commands">Команды</string>
     <string name="choose_command_grade">Выберите команду для оценки</string>
+    <string name="hello">Привет, %s</string>
 </resources>
