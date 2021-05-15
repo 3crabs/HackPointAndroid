@@ -3,6 +3,7 @@ package com.threecrabs.hackpoint.cache
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.reflect.TypeToken
+import com.threecrabs.hackpoint.api.dto.Token
 
 class SharedPrefs(private val context: Context) : BaseSharedPrefs() {
 
@@ -20,15 +21,13 @@ class SharedPrefs(private val context: Context) : BaseSharedPrefs() {
         save(COMPANY, null)
     }
 
-//    fun saveToken(token: DTOJwtToken?) {
-//        val id = JWT(token!!.access_token).getClaim("id").asLong()
-//        token.id = id
-//        save(TOKEN, token)
-//    }
+    fun saveToken(token: Token?) {
+        save(TOKEN, token)
+    }
 //
-//    fun getToken(): DTOJwtToken? {
-//        return get(TOKEN, object : TypeToken<DTOJwtToken>() {})
-//    }
+    fun getToken(): Token? {
+        return get(TOKEN, object : TypeToken<Token>() {})
+    }
 
     override fun getPrefs(): SharedPreferences {
         return context.getSharedPreferences(NAME_PREF, Context.MODE_PRIVATE)

@@ -1,6 +1,8 @@
 package com.threecrabs.hackpoint
 
 import android.app.Application
+import com.threecrabs.hackpoint.api.RetrofitServerApi
+import com.threecrabs.hackpoint.api.ServerRepository
 import com.threecrabs.hackpoint.cache.SharedPrefs
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -9,7 +11,7 @@ import org.koin.dsl.module
 class App: Application() {
 
     private val appModule = module {
-//        single { ServerRepository(RetrofitServerApi.create(get())) }
+        single { ServerRepository(RetrofitServerApi.create(get())) }
         single { SharedPrefs(get()) }
     }
 
