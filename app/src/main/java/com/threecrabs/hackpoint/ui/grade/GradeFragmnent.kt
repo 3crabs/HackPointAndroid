@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
+import com.threecrabs.hackpoint.R
 import com.threecrabs.hackpoint.databinding.GradeFragmentBinding
 import com.threecrabs.hackpoint.ui.commands.CommandsFragmentDirections
 import com.threecrabs.hackpoint.ui.grade.recycler.RecyclerItemPoint
@@ -41,17 +42,40 @@ class GradeFragmnent: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getPoints()
-        viewModel.points.observe(viewLifecycleOwner) {
+        viewModel.points.observe(viewLifecycleOwner) { points ->
             val list = mutableListOf<AbstractFlexibleItem<*>>()
-            list.addAll(it.map { RecyclerItemPoint(it) })
+            list.addAll(points.map { RecyclerItemPoint(it) })
             list.add(RecyclerItemPointEnd())
             binding.recycler.adapter = FlexibleAdapter(
                 list
             ).apply {
                 addListener(object: FlexibleAdapter.OnItemClickListener {
-                    override fun onItemClick(view: View?, position: Int): Boolean {
-                        getItem(position)?.let {
+                    override fun onItemClick(view: View, position: Int): Boolean {
+                        when (view.id) {
+                            R.id.left -> {
+                                if (position > 0) {
+                                    binding.recycler.post {
+                                        binding.recycler.smoothScrollToPosition(position - 1)
+                                    }
+                                }
+                            }
+                            R.id.right -> {
+                                if (points.size >= position - 2) {
+                                    binding.recycler.post {
+                                        binding.recycler.smoothScrollToPosition(position + 1)
+                                    }
+                                }
+                            }
+                            R.id.button -> {
 
+                            }
+                            R.id.gradeArea -> {
+                                getItem(position)?.let {
+                                    (it as? RecyclerItemPoint)?.let {
+                                        viewModel.degrePoint(it.item.id, it.item.point)
+                                    }
+                                }
+                            }
                         }
                         return false
                     }

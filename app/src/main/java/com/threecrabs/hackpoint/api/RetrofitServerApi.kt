@@ -12,10 +12,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 import java.util.concurrent.TimeUnit
 
 interface RetrofitServerApi {
@@ -31,6 +28,9 @@ interface RetrofitServerApi {
 
     @POST("admin/referee/demofest")
     fun demofest(): Maybe<Any>
+
+    @PUT("referee/point/{id}")
+    fun degreePoint(@Path("id") id: Int, @Body pointRequest: DTOPointRequest): Maybe<Any>
 
     companion object {
         fun create(sharedPrefs: SharedPrefs): RetrofitServerApi {

@@ -38,6 +38,9 @@ class RecyclerItemPointEnd
             button.setOnClickListener {
                 adapter.mItemClickListener.onItemClick(it, position)
             }
+            left.setOnClickListener {
+                adapter.mItemClickListener.onItemClick(it, position)
+            }
         }
     }
 

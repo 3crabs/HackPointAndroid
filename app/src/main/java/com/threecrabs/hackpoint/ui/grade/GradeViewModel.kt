@@ -21,4 +21,14 @@ class GradeViewModel: BaseViewModel() {
             })
     }
 
+    fun degrePoint(id: Int, degrePoint: Int) {
+        server.degreePoint(id, degrePoint)
+            .subscribeOn(Schedulers.io())
+            .subscribe({
+
+            }, {
+
+            })
+    }
+
 }
