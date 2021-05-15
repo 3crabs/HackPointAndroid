@@ -38,6 +38,11 @@ class RecyclerItemCommand(val item: DTOTeam)
             root.setOnClickListener {
                 adapter.mItemClickListener.onItemClick(it, position)
             }
+            if (item.statusFinalPitch == "present") {
+                check.visibility = View.VISIBLE
+            } else {
+                check.visibility = View.GONE
+            }
         }
     }
 

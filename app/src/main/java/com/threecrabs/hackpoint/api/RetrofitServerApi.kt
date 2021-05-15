@@ -29,8 +29,14 @@ interface RetrofitServerApi {
     @POST("admin/referee/demofest")
     fun demofest(): Maybe<Any>
 
+    @PUT("referee/note/{id}")
+    fun updateNote(@Path("id") id: Int, @Body note: DTORequestNote): Maybe<Any>
+
     @PUT("referee/point/{id}")
     fun degreePoint(@Path("id") id: Int, @Body pointRequest: DTOPointRequest): Maybe<Any>
+
+    @PUT("admin/team/{id}")
+    fun updateTeam(@Path("id") teamId: Int, @Body team: DTOTeam): Maybe<Any>
 
     companion object {
         fun create(sharedPrefs: SharedPrefs): RetrofitServerApi {

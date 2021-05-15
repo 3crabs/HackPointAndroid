@@ -10,7 +10,7 @@ data class DTOTeam(
     val isBlocked: String?,
     val name: String?,
     val nameProject: String?,
-    val statusFinalPitch: String?,
+    var statusFinalPitch: String?,
     val statusFirstPitch: String?,
     val statusSecondPitch: String?
 ): Serializable

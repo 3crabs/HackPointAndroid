@@ -42,6 +42,9 @@ class GradeFragmnent: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getPoints()
+        viewModel.note.observe(viewLifecycleOwner) {
+            binding.inputNotes.setText(it.text)
+        }
         viewModel.points.observe(viewLifecycleOwner) { points ->
             val list = mutableListOf<AbstractFlexibleItem<*>>()
             list.addAll(points.map { RecyclerItemPoint(it) })
@@ -67,7 +70,7 @@ class GradeFragmnent: Fragment() {
                                 }
                             }
                             R.id.button -> {
-
+                                viewModel.updateNote(binding.inputNotes.text.toString())
                             }
                             R.id.gradeArea -> {
                                 getItem(position)?.let {
@@ -80,6 +83,11 @@ class GradeFragmnent: Fragment() {
                         return false
                     }
                 })
+            }
+        }
+        viewModel.success.observe(viewLifecycleOwner) {
+            it.getContentIfNotHandled()?.let {
+                findNavController().popBackStack()
             }
         }
         binding.back.setOnClickListener {
