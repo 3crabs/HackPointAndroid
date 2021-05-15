@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.threecrabs.hackpoint.changeAuth
 import com.threecrabs.hackpoint.databinding.SignInFragmentBinding
 
 class SignInFragment: Fragment() {
@@ -40,7 +41,7 @@ class SignInFragment: Fragment() {
         }
         viewModel.success.observe(viewLifecycleOwner) {
             it.getContentIfNotHandled()?.let {
-
+                requireActivity().changeAuth()
             }
         }
         viewModel.inputError.observe(viewLifecycleOwner) {

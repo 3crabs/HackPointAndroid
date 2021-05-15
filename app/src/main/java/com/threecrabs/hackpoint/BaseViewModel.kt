@@ -10,4 +10,9 @@ open class BaseViewModel: ViewModel(), KoinComponent {
 
     val sharedPrefs: SharedPrefs by inject()
     protected val server: ServerRepository by inject()
+
+    val isAuth: Boolean
+        get() {
+            return sharedPrefs.isAuth
+        }
 }

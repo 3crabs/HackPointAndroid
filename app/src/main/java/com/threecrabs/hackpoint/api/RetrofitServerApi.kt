@@ -38,7 +38,6 @@ interface RetrofitServerApi {
 
             val gson = GsonBuilder()
                 .setLenient()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
                 .serializeNulls()
                 .create()
 

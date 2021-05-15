@@ -29,6 +29,11 @@ class SharedPrefs(private val context: Context) : BaseSharedPrefs() {
         return get(TOKEN, object : TypeToken<Token>() {})
     }
 
+    val isAuth: Boolean
+        get() {
+            return getToken() != null
+        }
+
     override fun getPrefs(): SharedPreferences {
         return context.getSharedPreferences(NAME_PREF, Context.MODE_PRIVATE)
     }

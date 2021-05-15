@@ -10,4 +10,9 @@
     <string name="sign_in">Войти</string>
     <string name="wrong_login_or_password">Неверный логин или пароль</string>
     <string name="empty_value">Заполните поле</string>
+    <string name="things_stand">Вот так обстоят дела</string>
+    <string name="done">завершен</string>
+    <string name="in_process">в процессе</string>
+    <string name="result">Результаты</string>
+    <string name="grade">Оценка</string>
 </resources>
