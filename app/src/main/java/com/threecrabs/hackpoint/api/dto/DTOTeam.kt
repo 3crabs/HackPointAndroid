@@ -12,5 +12,6 @@ data class DTOTeam(
     val nameProject: String?,
     var statusFinalPitch: String?,
     val statusFirstPitch: String?,
-    val statusSecondPitch: String?
+    val statusSecondPitch: String?,
+    val point: Int
 ): Serializable

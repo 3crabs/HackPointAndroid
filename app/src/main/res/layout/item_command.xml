@@ -17,11 +17,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/check"
+        app:layout_constraintEnd_toStartOf="@id/point"
         android:layout_marginEnd="8dp"
         app:fontFamily="@font/roboto_bold"
         android:textColor="@color/black"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/point"
+        tools:text="0"
+        android:textColor="@color/black"
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/check"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     
     <com.google.android.material.checkbox.MaterialCheckBox

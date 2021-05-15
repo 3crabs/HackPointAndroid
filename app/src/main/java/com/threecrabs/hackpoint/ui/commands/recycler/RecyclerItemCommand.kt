@@ -40,8 +40,11 @@ class RecyclerItemCommand(val item: DTOTeam)
             }
             if (item.statusFinalPitch == "present") {
                 check.visibility = View.VISIBLE
+                point.text = item.point.toString()
+                point.visibility = View.VISIBLE
             } else {
                 check.visibility = View.GONE
+                point.visibility = View.GONE
             }
         }
     }
