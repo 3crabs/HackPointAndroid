@@ -1,19 +1,21 @@
-package com.threecrabs.hackpoint.ui.commands
+package com.threecrabs.hackpoint.ui.grade
 
 import androidx.lifecycle.MutableLiveData
 import com.threecrabs.hackpoint.BaseViewModel
+import com.threecrabs.hackpoint.api.dto.DTOPoint
 import com.threecrabs.hackpoint.api.dto.DTOTeam
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class CommandViewModel: BaseViewModel() {
+class GradeViewModel: BaseViewModel() {
 
-    val teams = MutableLiveData<List<DTOTeam>>()
+    lateinit var team: DTOTeam
+    val points = MutableLiveData<List<DTOPoint>>()
 
-    fun getTeams() {
-        server.getTeam()
+    fun getPoints() {
+        server.getPoints(team.id)
             .subscribeOn(Schedulers.io())
             .subscribe({
-                teams.postValue(it)
+                points.postValue(it.points)
             }, {
                 val a = 1
             })

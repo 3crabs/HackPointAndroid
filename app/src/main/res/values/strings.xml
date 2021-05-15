@@ -18,4 +18,5 @@
     <string name="commands">Команды</string>
     <string name="choose_command_grade">Выберите команду для оценки</string>
     <string name="hello">Привет, %s</string>
+    <string name="choose_and_swipe">Выбирай и свайпай</string>
 </resources>

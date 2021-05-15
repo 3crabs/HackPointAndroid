@@ -1,6 +1,5 @@
 package com.threecrabs.hackpoint.api.intercetor
 
-import com.threecrabs.hackpoint.api.RetrofitServerApi
 import com.threecrabs.hackpoint.cache.SharedPrefs
 import okhttp3.Authenticator
 import okhttp3.Request

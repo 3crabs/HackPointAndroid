@@ -1,42 +1,45 @@
-package com.threecrabs.hackpoint.ui.commands.recycler
+package com.threecrabs.hackpoint.ui.grade.recycler
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.threecrabs.hackpoint.R
-import com.threecrabs.hackpoint.api.dto.DTOTeam
-import com.threecrabs.hackpoint.databinding.ItemCommandBinding
+import com.threecrabs.hackpoint.api.dto.DTOPoint
+import com.threecrabs.hackpoint.databinding.ItemGradeBinding
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.davidea.flexibleadapter.items.AbstractFlexibleItem
 import eu.davidea.flexibleadapter.items.IFlexible
 
-class RecyclerItemCommand(val item: DTOTeam)
-    : AbstractFlexibleItem<RecyclerItemCommand.CommandViewHolder>() {
+class RecyclerItemPoint(val item: DTOPoint)
+    : AbstractFlexibleItem<RecyclerItemPoint.PointViewHolder>() {
 
     override fun equals(other: Any?): Boolean {
         return false
     }
 
     override fun getLayoutRes(): Int {
-        return R.layout.item_command
+        return R.layout.item_grade
     }
 
     override fun createViewHolder(
         view: View,
         adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>?
-    ): CommandViewHolder {
-        return CommandViewHolder(ItemCommandBinding.bind(view))
+    ): PointViewHolder {
+        return PointViewHolder(ItemGradeBinding.bind(view))
     }
 
     override fun bindViewHolder(
         adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>,
-        holder: CommandViewHolder,
+        holder: PointViewHolder,
         position: Int,
         payloads: MutableList<Any>?
     ) {
         holder.binding.apply {
-            name.text = item.name
-            root.setOnClickListener {
-                adapter.mItemClickListener.onItemClick(it, position)
+            description.text = item.criterion.description
+            header.text = item.criterion.name
+            if (position == 0) {
+                left.visibility = View.GONE
+            } else {
+                left.visibility = View.VISIBLE
             }
         }
     }
@@ -45,5 +48,5 @@ class RecyclerItemCommand(val item: DTOTeam)
         return item.hashCode()
     }
 
-    class CommandViewHolder(val binding: ItemCommandBinding) : RecyclerView.ViewHolder(binding.root)
+    class PointViewHolder(val binding: ItemGradeBinding) : RecyclerView.ViewHolder(binding.root)
 }

@@ -19,5 +19,22 @@
         android:id="@+id/commands"
         android:name="com.threecrabs.hackpoint.ui.commands.CommandsFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/command_fragment" />
+        tools:layout="@layout/command_fragment" >
+        <action
+            android:id="@+id/action_commands_to_grade"
+            app:destination="@id/grade" >
+
+            <argument
+                app:argType="com.threecrabs.hackpoint.api.dto.DTOTeam"
+                android:name="team"/>
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/grade"
+        android:name="com.threecrabs.hackpoint.ui.grade.GradeFragmnent">
+        <argument
+            app:argType="com.threecrabs.hackpoint.api.dto.DTOTeam"
+            android:name="team"/>
+    </fragment>
 </navigation>

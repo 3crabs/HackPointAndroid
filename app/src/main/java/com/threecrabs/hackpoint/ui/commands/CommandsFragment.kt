@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.threecrabs.hackpoint.databinding.CommandFragmentBinding
 import com.threecrabs.hackpoint.ui.commands.recycler.RecyclerItemCommand
+import com.threecrabs.hackpoint.ui.main.MainFragmentDirections
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.davidea.flexibleadapter.common.FlexibleItemDecoration
 
@@ -31,7 +32,16 @@ class CommandsFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getTeams()
         viewModel.teams.observe(viewLifecycleOwner) { teams ->
-            binding.recycler.adapter = FlexibleAdapter(teams.map{ RecyclerItemCommand(it) })
+            binding.recycler.adapter = FlexibleAdapter(teams.map{ RecyclerItemCommand(it) }).apply {
+                addListener(object: FlexibleAdapter.OnItemClickListener {
+                    override fun onItemClick(view: View?, position: Int): Boolean {
+                        getItem(position)?.let {
+                            findNavController().navigate(CommandsFragmentDirections.actionCommandsToGrade(it.item))
+                        }
+                        return false
+                    }
+                })
+            }
 //            (binding.recycler.adapter as? FlexibleAdapter<*>)?.let {
 //                it.updateDataSet(teams.map{ RecyclerItemCommand(it) },true)
 //            }

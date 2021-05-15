@@ -71,5 +71,4 @@ class MainFragment: Fragment() {
             binding.name.text = getString(R.string.hello, it.referee.name)
         }
     }
-
 }

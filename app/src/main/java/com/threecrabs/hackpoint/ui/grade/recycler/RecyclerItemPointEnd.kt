@@ -1,49 +1,49 @@
-package com.threecrabs.hackpoint.ui.commands.recycler
+package com.threecrabs.hackpoint.ui.grade.recycler
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.threecrabs.hackpoint.R
-import com.threecrabs.hackpoint.api.dto.DTOTeam
-import com.threecrabs.hackpoint.databinding.ItemCommandBinding
+import com.threecrabs.hackpoint.api.dto.DTOPoint
+import com.threecrabs.hackpoint.databinding.ItemGradeBinding
+import com.threecrabs.hackpoint.databinding.ItemGradeFinalBinding
 import eu.davidea.flexibleadapter.FlexibleAdapter
 import eu.davidea.flexibleadapter.items.AbstractFlexibleItem
 import eu.davidea.flexibleadapter.items.IFlexible
 
-class RecyclerItemCommand(val item: DTOTeam)
-    : AbstractFlexibleItem<RecyclerItemCommand.CommandViewHolder>() {
+class RecyclerItemPointEnd
+    : AbstractFlexibleItem<RecyclerItemPointEnd.PointViewHolder>() {
 
     override fun equals(other: Any?): Boolean {
         return false
     }
 
     override fun getLayoutRes(): Int {
-        return R.layout.item_command
+        return R.layout.item_grade_final
     }
 
     override fun createViewHolder(
         view: View,
         adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>?
-    ): CommandViewHolder {
-        return CommandViewHolder(ItemCommandBinding.bind(view))
+    ): PointViewHolder {
+        return PointViewHolder(ItemGradeFinalBinding.bind(view))
     }
 
     override fun bindViewHolder(
         adapter: FlexibleAdapter<IFlexible<RecyclerView.ViewHolder>>,
-        holder: CommandViewHolder,
+        holder: PointViewHolder,
         position: Int,
         payloads: MutableList<Any>?
     ) {
         holder.binding.apply {
-            name.text = item.name
-            root.setOnClickListener {
+            button.setOnClickListener {
                 adapter.mItemClickListener.onItemClick(it, position)
             }
         }
     }
 
     override fun hashCode(): Int {
-        return item.hashCode()
+        return 22.hashCode()
     }
 
-    class CommandViewHolder(val binding: ItemCommandBinding) : RecyclerView.ViewHolder(binding.root)
+    class PointViewHolder(val binding: ItemGradeFinalBinding) : RecyclerView.ViewHolder(binding.root)
 }

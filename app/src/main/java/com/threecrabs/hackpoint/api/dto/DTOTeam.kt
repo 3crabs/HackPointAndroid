@@ -1,14 +1,16 @@
 package com.threecrabs.hackpoint.api.dto
 
+import java.io.Serializable
+
 data class DTOTeam(
-    val createdAt: Int?,
+    val createdAt: Long?,
     val descriptionReferee: String?,
     val descriptionTeam: String?,
-    val id: Int?,
+    val id: Int,
     val isBlocked: String?,
     val name: String?,
     val nameProject: String?,
     val statusFinalPitch: String?,
     val statusFirstPitch: String?,
     val statusSecondPitch: String?
-)
+): Serializable

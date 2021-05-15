@@ -2,9 +2,7 @@ package com.threecrabs.hackpoint.api
 
 import com.google.gson.GsonBuilder
 import com.threecrabs.hackpoint.Const
-import com.threecrabs.hackpoint.api.dto.DTORequestLogin
-import com.threecrabs.hackpoint.api.dto.DTOTeam
-import com.threecrabs.hackpoint.api.dto.Token
+import com.threecrabs.hackpoint.api.dto.*
 import com.threecrabs.hackpoint.api.intercetor.ClientInterceptor
 import com.threecrabs.hackpoint.api.intercetor.TokenAuthenticator
 import com.threecrabs.hackpoint.cache.SharedPrefs
@@ -17,6 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
 interface RetrofitServerApi {
@@ -26,6 +25,12 @@ interface RetrofitServerApi {
 
     @GET("admin/team")
     fun getTeams(): Maybe<List<DTOTeam>>
+
+    @GET("referee/point/note")
+    fun getPoints(@Query("teamId") teamId: Int): Maybe<DTOPoints>
+
+    @POST("admin/referee/demofest")
+    fun demofest(): Maybe<Any>
 
     companion object {
         fun create(sharedPrefs: SharedPrefs): RetrofitServerApi {
@@ -37,7 +42,7 @@ interface RetrofitServerApi {
                 .connectTimeout(Const.TIMEOUT_CONNECT, TimeUnit.SECONDS)
                 .readTimeout(Const.TIMEOUT_RW, TimeUnit.MINUTES)
                 .authenticator(TokenAuthenticator(sharedPrefs))
-                .addInterceptor(ClientInterceptor())
+                .addInterceptor(ClientInterceptor(sharedPrefs))
                 .addInterceptor(loggingInterceptor)
                 .build()
 
