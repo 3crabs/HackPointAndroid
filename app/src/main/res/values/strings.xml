@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">HackPoint</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_welcome">Добро пожаловать!</string>
+    <string name="info">HackPoint - оценОчка проектов твоего хакатона на кончиках пальцев</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="sign_in">Войти</string>
+    <string name="wrong_login_or_password">Неверный логин или пароль</string>
+</resources>
