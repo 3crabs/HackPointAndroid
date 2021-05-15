@@ -74,6 +74,11 @@ class GradeFragmnent: Fragment() {
                             }
                             R.id.gradeArea -> {
                                 getItem(position)?.let {
+                                    if (points.size >= position - 2) {
+                                        binding.recycler.post {
+                                            binding.recycler.smoothScrollToPosition(position + 1)
+                                        }
+                                    }
                                     (it as? RecyclerItemPoint)?.let {
                                         viewModel.degrePoint(it.item.id, it.item.point)
                                     }
