@@ -1,5 +1,6 @@
 package com.threecrabs.hackpoint.api.dto
 
 data class Token(
-    val token: String
+    val token: String,
+    val referee: DTOReferee
 )

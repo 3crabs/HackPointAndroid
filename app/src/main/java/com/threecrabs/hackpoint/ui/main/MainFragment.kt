@@ -5,7 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.threecrabs.hackpoint.BaseViewModel
+import com.threecrabs.hackpoint.changeAuth
 import com.threecrabs.hackpoint.databinding.MainFragmentBinding
 import com.threecrabs.hackpoint.ui.main.recycler.MainItem
 import com.threecrabs.hackpoint.ui.main.recycler.RecyclerMainItem
@@ -15,6 +19,7 @@ import eu.davidea.flexibleadapter.common.FlexibleItemDecoration
 class MainFragment: Fragment() {
 
     private lateinit var binding: MainFragmentBinding
+    private val viewModel: BaseViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,12 +49,26 @@ class MainFragment: Fragment() {
                 "воскресенье, 16 мая",
                 false
             ))
-        ))
+        )).apply {
+            addListener(object: FlexibleAdapter.OnItemClickListener {
+                override fun onItemClick(view: View?, position: Int): Boolean {
+                    findNavController().navigate(MainFragmentDirections.actionMainToCommands())
+                    return false
+                }
+            })
+        }
         binding.recycler.addItemDecoration(
             FlexibleItemDecoration(requireContext())
                 .withOffset(24)
                 .withBottomEdge(true)
         )
+        binding.logout.setOnClickListener {
+            viewModel.sharedPrefs.saveToken(null)
+            requireActivity().changeAuth()
+        }
+        viewModel.sharedPrefs.getToken()?.let {
+            binding.name.text = it.referee.name
+        }
     }
 
 }

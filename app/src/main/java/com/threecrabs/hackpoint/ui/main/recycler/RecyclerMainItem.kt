@@ -76,9 +76,9 @@ class RecyclerMainItem(val item: MainItem) :
             button.isEnabled = !item.status
             button.setText(
                 if (item.status) {
-                    R.string.grade
-                } else {
                     R.string.result
+                } else {
+                    R.string.grade
                 }
             )
             button.background = root.context.getDrawable(
@@ -98,7 +98,16 @@ class RecyclerMainItem(val item: MainItem) :
                     }
                 )
             )
+            if (!item.status) {
+                button.setOnClickListener {
+                    adapter.mItemClickListener.onItemClick(it, position)
+                }
+            }
         }
+    }
+
+    override fun hashCode(): Int {
+        return item.hashCode()
     }
 
     class MainItemViewHolder(val binding: MainItemBinding) : RecyclerView.ViewHolder(binding.root)

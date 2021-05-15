@@ -3,6 +3,7 @@ package com.threecrabs.hackpoint.api
 import com.google.gson.GsonBuilder
 import com.threecrabs.hackpoint.Const
 import com.threecrabs.hackpoint.api.dto.DTORequestLogin
+import com.threecrabs.hackpoint.api.dto.DTOTeam
 import com.threecrabs.hackpoint.api.dto.Token
 import com.threecrabs.hackpoint.api.intercetor.ClientInterceptor
 import com.threecrabs.hackpoint.api.intercetor.TokenAuthenticator
@@ -14,6 +15,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
 
@@ -21,6 +23,9 @@ interface RetrofitServerApi {
 
     @POST("login")
     fun login(@Body login: DTORequestLogin): Maybe<Token>
+
+    @GET("admin/team")
+    fun getTeams(): Maybe<List<DTOTeam>>
 
     companion object {
         fun create(sharedPrefs: SharedPrefs): RetrofitServerApi {

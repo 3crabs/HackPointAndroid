@@ -15,4 +15,6 @@
     <string name="in_process">в процессе</string>
     <string name="result">Результаты</string>
     <string name="grade">Оценка</string>
+    <string name="commands">Команды</string>
+    <string name="choose_command_grade">Выберите команду для оценки</string>
 </resources>

@@ -10,18 +10,19 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/logout"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/back"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_logout"
+            app:srcCompat="@drawable/ic_arrow_back"
+            android:tint="@color/grey_2"
             android:padding="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/name"
-            tools:text="Привет, Илья"
-            app:layout_constraintTop_toBottomOf="@id/logout"
+            android:text="@string/commands"
+            app:layout_constraintTop_toBottomOf="@id/back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
@@ -41,7 +42,7 @@
             android:layout_marginTop="6dp"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="24dp"
-            android:text="@string/things_stand"
+            android:text="@string/choose_command_grade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -51,7 +52,7 @@
             android:clipToPadding="false"
             app:layout_constraintTop_toBottomOf="@id/title"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:listitem="@layout/main_item"
+            tools:listitem="@layout/item_command"
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
 
